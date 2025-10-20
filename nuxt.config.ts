@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   hub: {
+    blob: true,
     database: true
   }
 })
