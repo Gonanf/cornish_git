@@ -11,10 +11,15 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
+    //'@prisma/nuxt',
     '@vueuse/nuxt',
+    '@nuxthub/core',
   ],
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
   },
+  hub: {
+    database: true
+  }
 })
