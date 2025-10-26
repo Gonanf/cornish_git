@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.9.0",
@@ -20,6 +21,7 @@
     "@vueuse/nuxt": "^13.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.44.7",
     "eslint": "^9.38.0",
     "lucide-vue-next": "^0.546.0",
     "nuxt": "^4.1.3",
@@ -32,6 +34,12 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "wrangler": "^4.44.0"
+=======
+    "@types/node": "^24.9.1",
+    "drizzle-kit": "^0.31.5",
+    "wrangler": "^4.45.0"
+>>>>>>> cba7d0a (feat(advertice capabilities to git))
   }
 }

@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
-    //'@prisma/nuxt',
     '@vueuse/nuxt',
     '@nuxthub/core',
   ],
