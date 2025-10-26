@@ -34,12 +34,6 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "wrangler": "^4.44.0"
-=======
-    "@types/node": "^24.9.1",
-    "drizzle-kit": "^0.31.5",
-    "wrangler": "^4.45.0"
->>>>>>> cba7d0a (feat(advertice capabilities to git))
   }
 }
