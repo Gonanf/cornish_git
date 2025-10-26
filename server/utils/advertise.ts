@@ -4,9 +4,12 @@ export const FLUSH = "0000";
 export const DELIMETER = "0001";
 export const END = "0002";
 
+export type Item = {type: "line" | "flush" | "delim" | "end", data?: Uint8Array}
+
 export class GitPKT {
 
-    data: Uint8Array | undefined;
+    data?: Uint8Array;
+    items?: Item[];
     constructor(array?: Array<string | Uint8Array>){
         if (!array) return;
 
@@ -23,6 +26,62 @@ export class GitPKT {
 
         //Then finish the message
         this.data?.set(new TextEncoder().encode(FLUSH),this.data.byteLength - 4);
+    }
+
+    parsePKT(pkt: Uint8Array){
+        const text_decoder = new TextDecoder();
+        let offset = 0;
+
+        this.items = [];
+        while (offset + 4 <= pkt.byteLength){
+            //Get the header of the line
+            const header = text_decoder.decode(pkt.subarray(offset,offset + 4));
+            offset += 4;
+            switch (header){
+                case FLUSH:
+                    this.items.push({type: "flush"});
+                    break;
+                case DELIMETER:
+                    this.items.push({type: "delim"});
+                    break;
+                case END:
+                    this.items.push({type: "end"});
+                    break;
+                default:
+                    //Get the base 16 line lenght total
+                    const h_len = parseInt(header,16);
+                    const data = pkt.subarray(offset,offset + (h_len - 4));
+                    offset += h_len - 4;
+                    this.items.push({type: "line", data});
+            }
+        }
+        return this;
+    }
+
+    parseCommand(){
+        if (!this.items || this.items.length <= 0) return;
+        
+        let command = undefined;
+        const args = [];
+
+        let delim = false;
+        for (const item of this.items){
+            if (item.type === "delim") {delim = true; continue;}
+
+            if (item.type !== "line") continue;
+
+            const text = new TextDecoder().decode(item.data!).replace(/\r?\n$/, "");
+            if (!delim){
+                if (text.startsWith("command=")) {
+                    command = text.slice("command=".length);
+                }
+            }
+            else{
+                args.push(text);
+            }
+        }
+
+        return {command, args}
     }
     
     //Format a string to the Git wire protocol
