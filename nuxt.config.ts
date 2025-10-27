@@ -2,7 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
+  nitro: {
+    preset: 'cloudflare-durable',
+    
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -12,14 +15,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     '@vueuse/nuxt',
-    '@nuxthub/core',
+    'nitro-cloudflare-dev',
   ],
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
   },
-  hub: {
-    blob: true,
-    database: true
-  }
 })

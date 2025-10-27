@@ -16,7 +16,6 @@
     "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "^1.11.0",
     "@nuxt/test-utils": "^3.19.2",
-    "@nuxthub/core": "^0.9.0",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.1",
     "@vueuse/nuxt": "^13.9.0",
     "class-variance-authority": "^0.7.1",
@@ -24,6 +23,7 @@
     "drizzle-orm": "^0.44.7",
     "eslint": "^9.38.0",
     "lucide-vue-next": "^0.546.0",
+    "nitro-cloudflare-dev": "0.2.2",
     "nuxt": "^4.1.3",
     "reka-ui": "^2.6.0",
     "shadcn-nuxt": "^2.3.2",
@@ -34,6 +34,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "miniflare": "^4.20251011.1",
     "wrangler": "^4.44.0"
   }
 }

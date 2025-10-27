@@ -20,6 +20,7 @@ export default eventHandler(async (event) => {
     console.log(data);
     
     if (data!.command === "ls-refs"){
-        
+        const CORNISH_GIT = event.context.cloudflare.env
+        console.log(CORNISH_GIT);
     }
 })
