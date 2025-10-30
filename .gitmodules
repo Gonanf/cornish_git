@@ -1,0 +1,3 @@
+[submodule "git-on-cloudflare"]
+	path = git-on-cloudflare
+	url = https://github.com/Gonanf/git-on-cloudflare

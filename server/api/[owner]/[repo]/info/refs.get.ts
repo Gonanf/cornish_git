@@ -1,4 +1,6 @@
 import { AdverticeUpload } from "~~/server/utils/advertise";
+import { capabilityAdvertisement  } from "$/git";
+import { repoKey } from "$/keys";
 
 export default defineEventHandler(async (event) => {
   const owner = getRouterParam(event,'owner');
@@ -14,7 +16,7 @@ export default defineEventHandler(async (event) => {
   }
 
   if (query.service == "git-upload-pack"){
-    return AdverticeUpload(event);
+    return await capabilityAdvertisement(env, service, repoKey(owner, repo));
   }
 
 })

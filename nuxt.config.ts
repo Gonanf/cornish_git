@@ -21,4 +21,7 @@ export default defineNuxtConfig({
     prefix: '',
     componentDir: './components/ui'
   },
+  alias: {
+    '$': './git-on-cloudflare/src'
+  }
 })
