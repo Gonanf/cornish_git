@@ -28,11 +28,13 @@
     "bindings": [
       {
         "name": "REPO_DO",
-        "class_name": "RepoDurableObject"
+        "class_name": "RepoDurableObject",
+        "script_name": "do_worker"
       },
       {
         "name": "AUTH_DO",
-        "class_name": "AuthDurableObject"
+        "class_name": "AuthDurableObject",
+        "script_name": "do_worker"
       }
     ]
   },
@@ -81,6 +83,6 @@
     "REPO_UNPACK_DELAY_MS": "500",
     "REPO_UNPACK_BACKOFF_MS": "1000",
     // Logging level: debug|info|warn|error
-    "LOG_LEVEL": "info"
+    "LOG_LEVEL": "debug"
   }
 }
