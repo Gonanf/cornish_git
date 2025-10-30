@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -22,6 +24,6 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   alias: {
-    '$': './git-on-cloudflare/src'
+    '$': fileURLToPath(new URL('./git-on-cloudflare/src', import.meta.url))
   }
 })
