@@ -3,7 +3,7 @@
 // Runtime types generated with workerd@1.20250917.0 2025-09-02 
 declare namespace Cloudflare {
 	interface GlobalProps {
-		mainModule: typeof import("./src/index");
+		mainModule: typeof import("./git-on.cloudflare/src/index");
 		durableNamespaces: "RepoDurableObject" | "AuthDurableObject";
 	}
 	interface Env {
@@ -18,8 +18,8 @@ declare namespace Cloudflare {
 		REPO_UNPACK_BACKOFF_MS: string;
 		AUTH_ADMIN_TOKEN: string;
 		LOG_LEVEL: string;
-		REPO_DO: DurableObjectNamespace<import("./src/index").RepoDurableObject>;
-		AUTH_DO: DurableObjectNamespace<import("./src/index").AuthDurableObject>;
+		REPO_DO: DurableObjectNamespace<import("./git-on.cloudflare/src/index").RepoDurableObject>;
+		AUTH_DO: DurableObjectNamespace<import("./git-on.cloudflare/src/index").AuthDurableObject>;
 		REPO_BUCKET: R2Bucket;
 		ASSETS: Fetcher;
 	}

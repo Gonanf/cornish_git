@@ -29,12 +29,12 @@
       {
         "name": "REPO_DO",
         "class_name": "RepoDurableObject",
-        "script_name": "do_worker"
+        //"script_name": "do_worker"
       },
       {
         "name": "AUTH_DO",
         "class_name": "AuthDurableObject",
-        "script_name": "do_worker"
+        //"script_name": "do_worker"
       }
     ]
   },

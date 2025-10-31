@@ -97,11 +97,13 @@ export class RepoDurableObject extends DurableObject {
   // Keep this mapping explicit and small so behavior is easy to audit.
   async fetch(request: Request): Promise<Response> {
     // Touch access and (re)schedule an idle cleanup alarm
+    console.log("fetch1", { method: request.method })
     try {
       await this.touchAndMaybeSchedule();
     } catch {}
     const url = new URL(request.url);
     this.logger.debug("fetch", { path: url.pathname, method: request.method });
+    console.log("fetch", { path: url.pathname, method: request.method })
     const store = asTypedStorage<RepoStateSchema>(this.ctx.storage);
 
     // Receive-pack: parse update commands section and packfile, store pack to R2,
