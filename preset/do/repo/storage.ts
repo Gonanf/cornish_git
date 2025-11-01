@@ -10,14 +10,14 @@
 import type { RepoStateSchema } from "./repoState.ts";
 
 import { asTypedStorage, objKey } from "./repoState.ts";
-import { r2LooseKey } from "$/keys.ts";
-import { isValidOid, createInflateStream } from "$/common/index.ts";
+import { r2LooseKey } from "../../../git-on-cloudflare/src/keys.ts";
+import { isValidOid, createInflateStream } from "../../../git-on-cloudflare/src/common/index.ts";
 import {
   inflateAndParseHeader,
   parseCommitRefs,
   parseTreeChildOids,
   parseCommitText,
-} from "$/git/index.ts";
+} from "../../../git-on-cloudflare/src/git/index.ts";
 import { getDb, getPackOidsBatch } from "./db/index.ts";
 
 /**

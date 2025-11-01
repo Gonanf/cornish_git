@@ -5,7 +5,10 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "workers_dev": false,
+  "build":{
+    "command": "NITRO_PRESET=./preset pnpm run build"
+  },
+  "workers_dev": true,
   "routes": [
     {
       "pattern": "cornish_git.boldwave.org",
@@ -29,12 +32,12 @@
       {
         "name": "REPO_DO",
         "class_name": "RepoDurableObject",
-        //"script_name": "do_worker"
+        //  "script_name": "git-on-cloudflare/src/do"
       },
       {
         "name": "AUTH_DO",
         "class_name": "AuthDurableObject",
-        //"script_name": "do_worker"
+        // "script_name": "git-on-cloudflare/src/do"
       }
     ]
   },

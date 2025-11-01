@@ -21,8 +21,8 @@ import {
   getHydrPendingCounts,
   getHydrPendingOids,
 } from "./db/index.ts";
-import { r2LooseKey, doPrefix, packIndexKey } from "$/keys.ts";
-import { isValidOid } from "$/common/index.ts";
+import { r2LooseKey, doPrefix, packIndexKey } from "../../../git-on-cloudflare/src/keys.ts";
+import { isValidOid } from "../../../git-on-cloudflare/src/common/index.ts";
 import { readCommitFromStore } from "./storage.ts";
 
 /**

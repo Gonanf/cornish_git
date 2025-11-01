@@ -18,5 +18,5 @@
   "compilerOptions": {
     "types": ["./worker-configuration.d.ts"]
   },
-  "includes": ["./worker-configuration.d.ts", "./git-on-cloudflare/src/do/index.ts"]
+  "includes": ["./worker-configuration.d.ts"]
 }

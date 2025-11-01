@@ -1,19 +1,19 @@
 import type { RepoStateSchema, Head } from "./repoState.ts";
-import type { UnpackProgress } from "$/common/index.ts";
+import type { UnpackProgress } from "../../../git-on-cloudflare/src/common/index.ts";
 
 import { DurableObject } from "cloudflare:workers";
 import type { DrizzleSqliteDODatabase } from "drizzle-orm/durable-sqlite";
 import { asTypedStorage, objKey } from "./repoState.ts";
-import { doPrefix } from "$/keys.ts";
+import { doPrefix } from "../../../git-on-cloudflare/src/keys.ts";
 import {
   encodeGitObjectAndDeflate,
   receivePack,
   buildPackV2,
   parseGitObject,
   indexPackOnly,
-} from "$/git/index.ts";
-import { text, createLogger, isValidOid, bytesToHex, createInflateStream } from "$/common/index.ts";
-import { r2PackKey } from "$/keys.ts";
+} from "../../../git-on-cloudflare/src/git/index.ts";
+import { text, createLogger, isValidOid, bytesToHex, createInflateStream } from "../../../git-on-cloudflare/src/common/index.ts";
+import { r2PackKey } from "../../../git-on-cloudflare/src/keys.ts";
 import {
   enqueueHydrationTask,
   processHydrationSlice,
@@ -41,7 +41,7 @@ import { debugState, debugCheckCommit, debugCheckOid } from "./debug.ts";
 import { migrate } from "drizzle-orm/durable-sqlite/migrator";
 import { getDb, insertPackOids } from "./db/index.ts";
 import { migrateKvToSql } from "./db/migrate.ts";
-import migrations from "$/drizzle/migrations";
+import migrations from "../../../git-on-cloudflare/src/drizzle/migrations";
 
 /**
  * Repository Durable Object (per-repo authority)
@@ -97,13 +97,12 @@ export class RepoDurableObject extends DurableObject {
   // Keep this mapping explicit and small so behavior is easy to audit.
   async fetch(request: Request): Promise<Response> {
     // Touch access and (re)schedule an idle cleanup alarm
-    console.log("fetch1", { method: request.method })
     try {
       await this.touchAndMaybeSchedule();
     } catch {}
     const url = new URL(request.url);
     this.logger.debug("fetch", { path: url.pathname, method: request.method });
-    console.log("fetch", { path: url.pathname, method: request.method })
+    console.log("fetch", { path: url.pathname, method: request.method });
     const store = asTypedStorage<RepoStateSchema>(this.ctx.storage);
 
     // Receive-pack: parse update commands section and packfile, store pack to R2,
@@ -278,6 +277,8 @@ export class RepoDurableObject extends DurableObject {
       const next = await store.get("unpackNext");
       if (work && next) {
         this.logger.warn("receive:block-busy", { retryAfter: 10 });
+        console.log("cheso3")
+
         return new Response("Repository is busy unpacking; please retry shortly.\n", {
           status: 503,
           headers: {
